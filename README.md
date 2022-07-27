@@ -8,4 +8,6 @@
 Список последних ссылок хранится в localStorage
 ```
 
+Ссылка на сервис в github-pages <https://nayteruz.github.io/vue-link-shortener/>
+
 ![Vite App](https://user-images.githubusercontent.com/44471576/181212529-8ba9a1d4-5588-40c7-8602-413d7fe04970.png)
