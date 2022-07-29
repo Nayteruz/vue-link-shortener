@@ -11,8 +11,18 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "firebase": "^9.9.1",
+    "mitt": "^3.0.0",
+    "mongodb": "^4.8.1",
+    "mongoose": "^6.5.0",
+    "nanoid": "^4.0.0",
     "pinia": "^2.0.16",
-    "vue": "^3.2.37"
+    "realm-web": "^1.7.1",
+    "tiny-emitter": "^2.1.0",
+    "uuid": "^8.3.2",
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.3",
+    "vue-uuid": "^3.0.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",

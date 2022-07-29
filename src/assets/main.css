@@ -13,7 +13,10 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: flex-start;
 }
+
 input, textarea, select {
   outline: none;
 }
@@ -27,17 +30,4 @@ input, textarea, select {
   font-weight: normal;
 }
 
-body {
-  min-height: 100vh;
-  color: #333;
-  background: #fff;
-  transition: color 0.5s, background-color 0.5s;
-  line-height: 1.6;
-  font-family: Roboto, sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  place-items: center;
-}
+
