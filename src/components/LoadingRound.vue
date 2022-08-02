@@ -2,7 +2,7 @@
   <span v-if="store.isLoading" class="loading absolute left-2/4 top-5 -mx-12 block w-24 h-24 rounded-full border-8 border-indigo-800"></span>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import {useShortStore} from "@/stores/shortLinkStore";
   const store = useShortStore();
 </script>

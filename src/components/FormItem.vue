@@ -15,6 +15,7 @@
 import {useShortStore} from "@/stores/shortLinkStore";
 import {ref, inject} from "vue";
 import {customAlphabet} from "nanoid";
+// @ts-ignore
 import {db, ref_db, push_ref, update_db, child_db} from "@/config/config_api.js"
 
 const store = useShortStore();
@@ -27,20 +28,24 @@ const sendShort = async (): Promise<void> => {
   const newShortKey = push_ref(child_db(ref_db(db), 'links')).key;
   const short_code = generateId(newShortKey);
   const updates = {};
-
-  updates['/links/' + newShortKey] = {
+  const data:object = {
     original_link: link_value.value,
     timestamp: Date.now(),
-    short_link: document.location.origin + document.location.pathname + short_code,
+    short_link: document.location.origin + '/' + short_code,
     short_code: short_code,
-    code: newShortKey
-  };
+    code: newShortKey,
+  }
+
+  // @ts-ignore
+  updates['/links/' + newShortKey] = data;
   update_db(ref_db(db), updates)
     .then(()=>{
       link_value.value = '';
+      store.setLinks(data);
+      // @ts-ignore
       emitter.emit('sendData');
       store.isLoading = false;
-    }).catch((e)=>{
+    }).catch((e:string)=>{
       error_message.value = 'Ошибка отправки данных ' + e;
       store.isLoading = false;
   })

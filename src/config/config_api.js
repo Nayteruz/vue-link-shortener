@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, child, push, query, limitToLast, update, remove, onValue, orderByChild, orderByValue, equalTo} from "firebase/database";
+import { getDatabase, ref, get, child, push, query, limitToLast, update, remove, onValue, orderByChild, orderByKey, orderByValue, equalTo} from "firebase/database";
 
 const config = {
     apiKey: "AIzaSyC5RpSCtGtGiZwcy4RDbSMrSTelXFr4oO8",
@@ -19,8 +19,7 @@ export const query_db = query;
 export const limitToLast_db = limitToLast;
 export const update_db = update;
 export const remove_db = remove;
-export const onValue_db = onValue;
 export const orderByChild_db = orderByChild;
 export const equalTo_db = equalTo;
-export const orderByValue_db = orderByValue;
+export const get_db = get;
 
