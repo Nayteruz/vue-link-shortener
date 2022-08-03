@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import {useShortStore} from "@/stores/shortLinkStore";
-import {ref, inject} from "vue";
+import {ref, inject,} from "vue";
 import {customAlphabet} from "nanoid";
 // @ts-ignore
 import {db, ref_db, push_ref, update_db, child_db} from "@/config/config_api.js"
@@ -31,7 +31,7 @@ const sendShort = async (): Promise<void> => {
   const data:object = {
     original_link: link_value.value,
     timestamp: Date.now(),
-    short_link: document.location.origin + '/' + short_code,
+    short_link: document.location.origin + import.meta.env.BASE_URL + short_code,
     short_code: short_code,
     code: newShortKey,
   }

@@ -1,30 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import HomeView from "@/views/HomeView.vue";
 const routes = [
     {
         path: '/',
-        redirect: { name: 'home' },
-    },
-    {
-        path: '/vue-link-shortener',
         name: 'home',
-        component:() => import('@/views/HomeView.vue'),
-
+        component:HomeView,
     },
     {
         path: '/:slug',
         name: 'redirectLink',
         component: () => import('@/views/RedirectView.vue'),
     }
-
 ]
 
 const router = createRouter({
-    history: createWebHistory('/'),
+    history: createWebHistory( import.meta.env.BASE_URL),
     routes
 })
-router.beforeEach((to, from, next) => {
-    if (to.path === 'vue-link-shortener') next({ name: 'home' })
-    next()
-})
+
 export default router

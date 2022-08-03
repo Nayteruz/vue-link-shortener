@@ -20,6 +20,8 @@
   const route = useRoute();
   const founded = ref(null);
 
+  console.log(route)
+
   const urlKey = computed(():string => {
     return route.path.replace('/', '');
   })

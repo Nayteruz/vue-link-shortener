@@ -2,21 +2,21 @@
   <div class="list-links relative">
     <ul class="m-0 mt-5 p-0 list-none flex flex-col gap-2">
       <li
-          v-for="link in linksReverse"
-          :key="link?.short_code"
-          class="flex items-center justify-between gap-4 bg-blue-200 rounded-lg px-4 py-3">
+        v-for="link in linksReverse"
+        :key="link?.short_code"
+        class="flex items-center justify-between gap-4 bg-blue-200 rounded-lg px-4 py-3">
         <span class="overflow-hidden whitespace-nowrap text-ellipsis h-6">{{ link?.original_link }}</span>
-        <span class="ml-auto">{{ link?.short_link }}</span>
+        <span class="ml-auto whitespace-nowrap">{{ link?.short_link }}</span>
         <button
-            @click.prevent="copyLink(link)"
-            class="copy w-24 px-3 py-1 text-white rounded-lg cursor-pointer select-none"
-            :class="{'bg-purple-700': link?.copied === true, 'bg-blue-500 hover:bg-blue-400 active:bg-blue-600': !link?.copied}"
+          @click.prevent="copyLink(link)"
+          class="copy w-24 px-3 py-1 text-white rounded-lg cursor-pointer select-none"
+          :class="{'bg-purple-700': link?.copied === true, 'bg-blue-500 hover:bg-blue-400 active:bg-blue-600': !link?.copied}"
         >
           {{ link?.copied ? 'Copied' : 'Copy' }}
         </button>
         <button
-            @click.prevent="deleteItem(link)"
-            class="text-lg px-2 py-0 text-white rounded-lg cursor-pointer bg-red-500 hover:bg-red-400 active:bg-red-600 select-none"
+          @click.prevent="deleteItem(link)"
+          class="text-lg px-2 py-0 text-white rounded-lg cursor-pointer bg-red-500 hover:bg-red-400 active:bg-red-600 select-none"
         >
           ×
         </button>
