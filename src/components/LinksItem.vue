@@ -37,7 +37,14 @@ import {inject, computed} from "vue";
 const store = useShortStore();
 
 const linksReverse = computed(():Array<any> => {
-  return store.getLinks.reverse();
+  function compare(a:any, b:any) {
+    if (a.timestamp > b.timestamp)
+      return -1;
+    if (a.name < b.name)
+      return 1;
+    return 0;
+  }
+  return store.getLinks.sort(compare);
 })
 
 const emitter:any = inject('emitter');

@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import {useShortStore} from "@/stores/shortLinkStore";
-import {ref, inject,} from "vue";
+import {ref, inject, watch,} from "vue";
 import {customAlphabet} from "nanoid";
 // @ts-ignore
 import {db, ref_db, push_ref, update_db, child_db} from "@/config/config_api.js"
@@ -23,7 +23,19 @@ const link_value = ref('');
 const error_message = ref('');
 const emitter = inject('emitter');
 
+watch(()=> link_value.value, (n,o)=>{
+  if(n.length && !isUrl(n)){
+      error_message.value = 'Текст не является ссылкой';
+  } else {
+    error_message.value = '';
+  }
+})
+
 const sendShort = async (): Promise<void> => {
+  if(!isUrl(link_value.value)) {
+    error_message.value = 'Текст не является ссылкой';
+    return;
+  }
   store.isLoading = true;
   const newShortKey = push_ref(child_db(ref_db(db), 'links')).key;
   const short_code = generateId(newShortKey);
@@ -54,5 +66,10 @@ const sendShort = async (): Promise<void> => {
 const generateId = (key: string): string => {
   const nanoid = customAlphabet(key, 5)
   return nanoid();
+}
+
+const isUrl = (str:string):Boolean => {
+  let res = str.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+  return (res !== null)
 }
 </script>
