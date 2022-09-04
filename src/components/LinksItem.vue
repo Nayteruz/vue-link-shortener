@@ -5,8 +5,7 @@
         v-for="link in linksReverse"
         :key="link?.short_code"
         class="flex items-center justify-between gap-4 bg-blue-200 rounded-lg px-4 py-3">
-        <span class="overflow-hidden whitespace-nowrap text-ellipsis h-6">{{ link?.original_link }}</span>
-        <span class="ml-auto whitespace-nowrap">{{ link?.short_link }}</span>
+        <span class="mr-auto whitespace-nowrap">{{ link?.short_link }}</span>
         <button
           @click.prevent="copyLink(link)"
           class="copy w-24 px-3 py-1 text-white rounded-lg cursor-pointer select-none"

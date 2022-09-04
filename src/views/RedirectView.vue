@@ -24,6 +24,18 @@
     return route.path.replace('/', '');
   })
 
+  const openNewWindows = (links: Array<any>) => {
+    if(!links.length) return;
+    for (let i = 0; i < links.length; i++){
+      if(i === links.length-1){
+        window.open(links[i].link, '_self');
+      } else {
+        window.open(links[i].link, '_blank');
+      }
+    }
+    window.close();
+  }
+
   const getUrlInfo = async () => {
     store.isLoading = true;
     const dbRef = ref_db(db, '/links');
@@ -37,7 +49,9 @@
       founded.value = true;
       querySnapshot.forEach((childSnapshot:any):void => {
         let value = childSnapshot.val();
-        document.location.href = value.original_link;
+        console.log(value)
+        openNewWindows(value.original_links)
+        //document.location.href = value.original_link;
         store.isLoading = false;
       });
     }
